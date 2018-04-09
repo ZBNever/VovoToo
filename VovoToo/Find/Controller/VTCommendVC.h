@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface VTCommendVC : UIViewController
+@interface VTCommendVC : UITableViewController
 
 @end
