@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface VTMessageVC : VTBaseViewController
+@interface VTMessageVC : UITableViewController
 
 @end

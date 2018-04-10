@@ -13,45 +13,42 @@
 @end
 
 @implementation VTMessageVC
-
+///继承UITableViewController必须使用这种初始化方法才有用
+- (instancetype)initWithStyle:(UITableViewStyle)style{
+    if (self = [super initWithStyle:style]) {
+        [BaseMethod controller:self Title:@"消息" tabBarItemImage:@"message_gray" tabBarItemSelectedImage:@"message"];
+    }
+    return self;
+}
+///继承UITableViewController此方法不会被调用
+/**
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-        [self controller:self Title:@"消息" tabBarItemImage:@"message_gray" tabBarItemSelectedImage:@"message"];
+        [BaseMethod controller:self Title:@"消息" tabBarItemImage:@"message_gray" tabBarItemSelectedImage:@"message"];
         
     }
     
     return self;
     
 }
+*/
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-//    self.navigationController.navigationBar.backgroundColor = [UIColor themeColor];
-//    [self.navigationController.navigationBar setBackgroundImage:[self imageWithColor:[UIColor themeColor]] forBarMetrics:UIBarMetricsDefault];
+    [self initNavigationBar];
+    
+}
+- (void)initNavigationBar{
+    self.navigationController.navigationBar.backgroundColor = [UIColor themeColor];
+    self.navigationController.navigationBar.barTintColor = [UIColor themeColor];
+    //取消导航栏半透明效果
+    self.navigationController.navigationBar.translucent = NO;
 
 }
-
-/**
- *  @brief  根据颜色生成纯色图片
- *
- *  @param color 颜色
- *
- *  @return 纯色图片
- */
-- (UIImage *)imageWithColor:(UIColor *)color {
+- (void)initheadBtnUI{
     
-    CGRect rect = CGRectMake(0.0f, 1.0f, 1.0f, 1.0f);
-    UIGraphicsBeginImageContext(rect.size);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetFillColorWithColor(context, [color CGColor]);
-    CGContextFillRect(context, rect);
     
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return image;
 }
 
 
